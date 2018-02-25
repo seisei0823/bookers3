@@ -1,10 +1,11 @@
 <table class='table table-hover table-inverse'>
   <thead>
-    <tr> 
-      <th></th>
+    <tr>
+      <th>icon</th>
       <th>Title</th>
       <th>Opinion</th>
-      <th colspan="3"></th>
+      <th><i class="far fa-comment fa-2x" style="color: #32CD32;"></i></th>
+      <th><i class="fab fa-gratipay fa-2x" style="color: #FFB6C1;"></i></th>
     </tr>
   </thead>
 
@@ -17,6 +18,18 @@
         </td>
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
+        <td><%= book.comments.count %></td>
+        <td>
+          <% if book.unique_favo(current_user) %>
+            <%= link_to book_favorites_path(book), remote: true, method: :delete, id: "favorite-heart#{book.id}" do %>
+              <i class="fas fa-heart" style="color: red;"></i>
+            <% end %>
+          <% else %>
+            <%= link_to book_favorites_path(book), remote: true, method: :post, id: "favorite-heart#{book.id}" do %>
+              <i class="far fa-heart" style="color: red;"></i>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

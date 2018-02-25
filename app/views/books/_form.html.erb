@@ -1,12 +1,12 @@
 <%= form_for(book) do |f| %>
   <div class="field row">
     <%= f.label :title %>
-    <%= f.text_field :title, class: 'col-xs-12' %>
+    <%= f.text_field :title, class: 'col-xs-12 form-control' %>
   </div>
 
   <div class="field row">
     <%= f.label :opinion %>
-    <%= f.text_area :body, class: 'col-xs-12'%>
+    <%= f.text_area :body, class: 'col-xs-12 form-control'%>
   </div>
 
   <div class="actions row">
